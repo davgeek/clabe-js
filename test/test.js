@@ -48,6 +48,6 @@ describe('getBankCode', function(){
 });
 describe('getAccountNumber', function(){
   it("Should return bank account if the last digits belong to one", function(){
-    expect(getAccountNumber(VALID_CLABE)).to.equal('000000000008');
+    expect(getAccountNumber(VALID_CLABE)).to.equal('00000000000');
   });
 });
