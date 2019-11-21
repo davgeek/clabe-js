@@ -1,6 +1,8 @@
 /* eslint-disable */
 const validateClabe = require('../lib/index.js').validateClabe;
 const getBankName = require('../lib/index.js').getBankName;
+const getBankCode = require('../lib/index.js').getBankCode;
+const getAccountNumber = require('../lib/index.js').getAccountNumber;
 const computeControlDigit = require('../lib/index.js').computeControlDigit;
 const assert = require('chai').assert;
 const expect = require('chai').expect;
@@ -37,5 +39,15 @@ describe('getBankName', function(){
   });
   it('should give an error for invalid clabe', function(){
     expect(()=> new getBankName(INVALID_CLABE_BANK_CODE)).to.throw(Error);
+  });
+});
+describe('getBankCode', function(){
+  it("Should return bank code if the first 3 digits belong to one", function(){
+    expect(getBankCode(VALID_CLABE)).to.equal('002');
+  });
+});
+describe('getAccountNumber', function(){
+  it("Should return bank account if the last digits belong to one", function(){
+    expect(getAccountNumber(VALID_CLABE)).to.equal('000000000008');
   });
 });
